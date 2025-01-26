@@ -14,7 +14,7 @@ public class BookstoreApp {
                     "2) Print Book list\n" +
                     "3) Highest book price\n" +
                     "4) Lowest book price\n" +
-                    "5) Display book chosen category\n" +
+                    "5) Display books average price\n" +
                     "6) Exit");
 
             //Input
