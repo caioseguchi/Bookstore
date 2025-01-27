@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class BookstoreCompute {
@@ -39,18 +40,69 @@ public class BookstoreCompute {
             return;
         }
 
-        //Input
-        System.out.println("Enter book id: ");
-        id = scanner.nextInt();
-        scanner.nextLine();
-        System.out.println("Enter book title: ");
-        title = scanner.nextLine();
-        System.out.println("Enter book author: ");
-        author = scanner.nextLine();
-        System.out.println("Enter book category: ");
-        category = scanner.nextLine();
-        System.out.println("Enter book price: ");
-        price = scanner.nextDouble();
+        //Input + exception handle
+        //1.a Enter ID book(int)
+        while (true){
+            try{
+                System.out.println("Enter book id: ");
+                id = scanner.nextInt();//only int
+                scanner.nextLine();
+                break;
+            } catch (InputMismatchException e){
+                System.out.println("Invalid input. Please enter a valid integer for the book ID!");
+                scanner.nextLine();
+            }//catch
+        }//while
+
+        //1.b Enter book Tittle(not empty)
+        while (true){
+            System.out.println("Enter book title: ");
+            title = scanner.nextLine();//String
+            if (!title.trim().isEmpty()){
+                break;
+            } else {
+                System.out.println("Title cannot be empty. Please enter a valid book title!");
+            }
+        }
+
+        //1.c Enter book author(not empty)
+        while (true){
+            System.out.println("Enter book author: ");
+            author = scanner.nextLine();
+            if (!title.trim().isEmpty()){
+                break;
+            } else {
+                System.out.println("Author cannot be empty. Please enter a valid book author!");
+            }
+        }
+
+        //1.d Enter book category(not empty)
+        while (true){
+            System.out.println("Enter book category: ");
+            category = scanner.nextLine();
+            if (!title.trim().isEmpty()){
+                break;
+            } else {
+                System.out.println("Author cannot be empty. Please enter a valid book author!");
+            }
+        }
+
+        while (true){
+            try{
+                System.out.println("Enter book price: ");
+                price = scanner.nextDouble();//Double
+                scanner.nextLine();
+                if (price > 0.0){
+                    break;
+                } else {
+                    System.out.println("Price must be grater than 0. Please enter a valid book price!");
+                }
+            }catch (InputMismatchException e){
+                System.out.println("Invalid input, Please enter a valid number for the price.");
+                scanner.nextLine();
+            }
+        }
+
 
         //Save new Book
         books[count] = new Book(id, title, author, category, price);
